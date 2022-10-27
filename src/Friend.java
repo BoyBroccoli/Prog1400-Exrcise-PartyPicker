@@ -1,5 +1,3 @@
-package out;
-
 import java.util.ArrayList;
 
 public class Friend extends Person{
