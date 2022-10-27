@@ -23,4 +23,6 @@
 hs_err_pid*
 
 # ide from intellije
-*.ide
+*.idea
+.idea*
+*.iml
