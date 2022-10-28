@@ -23,6 +23,8 @@ public class Person {
         return this.lastName;
     }
 
+    public String getFullName(){return this.firstName +" " + this.lastName;}
+
     public boolean getIsInvited(){
         return this.isInvited;
     }
