@@ -1,4 +1,6 @@
-public class Person {
+import java.util.ArrayList;
+
+public abstract class Person {
     private String firstName;
     private String lastName;
     boolean isInvited;
@@ -43,4 +45,6 @@ public class Person {
         this.isInvited=invite;
     }
 
-}
+    public abstract ArrayList<String> getFoodToBring();
+    }
+

@@ -7,4 +7,21 @@ public class Friend extends Person{
         super(fName, lName, isInvited);
         this.foodToBring=food;
     }
+
+    @Override
+    public ArrayList<String> getFoodToBring(){
+        return this.foodToBring;
+    }
+
+    // Method to display friend information
+    public String friendToString(Friend friend){
+        String info = super.getFullName() + " is bringing " +  friend.getFoodToBring() +".";
+        if(super.isInvited){
+            info += " They are invited to the party.";
+        } else {
+            info += " They are NOT invited to the party.";
+        }
+        return info;
+
+    }
 }

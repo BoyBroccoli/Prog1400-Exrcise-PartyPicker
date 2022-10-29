@@ -6,9 +6,8 @@ public class Main{
 
         // Creating a Friend ArrayList
         ArrayList<Friend> friends = new ArrayList<Friend>();
-        ArrayList<Person> people = new ArrayList<Person>();
         String userInput, userInput2, userInput3, userInput4;
-        String[] options = {"Invited", "Not Invited"};
+        String[] buttonOptions = {"Invited", "Not Invited"};
 
         // Declaring Message Prompts
         String promptGreeting = """
@@ -35,9 +34,9 @@ public class Main{
 
             userInput3 = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.OK_CANCEL_OPTION);
 
-            userInput4 = String.valueOf(JOptionPane.showOptionDialog(null, invitePrompt, title, JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]));
+            userInput4 = String.valueOf(JOptionPane.showOptionDialog(null, invitePrompt, title, JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, buttonOptions, buttonOptions[1]));
 
-            Person person1 = new Person(userInput, userInput2, userInput4);
+
         } while(runProgram == true);
 
 
