@@ -31,6 +31,10 @@ public abstract class Person {
         return this.isInvited;
     }
 
+    public abstract ArrayList<String> getFoodToBring();
+
+    public abstract String toString(Friend friend);
+
     // Setters
 
     public void setFirstName(String fname){
@@ -45,6 +49,8 @@ public abstract class Person {
         this.isInvited=invite;
     }
 
-    public abstract ArrayList<String> getFoodToBring();
+
     }
+
+
 

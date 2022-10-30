@@ -6,7 +6,8 @@ public class Main{
 
         // Creating a Friend ArrayList
         ArrayList<Friend> friends = new ArrayList<Friend>();
-        String userInput, userInput2, userInput3, result = "";
+        String userInput;
+        StringBuilder report = new StringBuilder(); // Using StringBuilder to append report results instead of +=
         String[] buttonOptions = {"Invited", "Not Invited"};
         int choice;
         int index = 0;
@@ -38,12 +39,12 @@ public class Main{
             friend1.setFirstName(userInput);
 
             // Asking user ot input friends last name
-            userInput2 = JOptionPane.showInputDialog(null, lastNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
-            friend1.setLastName(userInput2);
+            userInput = JOptionPane.showInputDialog(null, lastNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
+            friend1.setLastName(userInput);
 
             // Asking user the food the friend is bringing.
-            userInput3 = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.OK_CANCEL_OPTION);
-            friend1.setFoodToBring(userInput3);
+            userInput = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.OK_CANCEL_OPTION);
+            friend1.setFoodToBring(userInput);
 
             // Asking user if the friend is invited or not.
             choice =
@@ -68,15 +69,15 @@ public class Main{
                 continueProgram = false;
             }
 
-        } while(continueProgram == true);
+        } while(continueProgram);
 
         // for each loop to gather results from friends arrayList
         for (Friend currentFriend: friends){
-            result += currentFriend.friendToString(currentFriend);
+            report.append(currentFriend.toString(currentFriend));
         }
 
         // Displaying final results to user
-        JOptionPane.showMessageDialog(null, result, title, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, report.toString(), title, JOptionPane.INFORMATION_MESSAGE);
 
 
 
