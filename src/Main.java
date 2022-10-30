@@ -1,16 +1,14 @@
 import javax.swing.*; //importing JOptionPane
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class Main{
     public static void main(String[] args) {
 
         // Creating a Friend ArrayList
-        ArrayList<Friend> friends = new ArrayList<Friend>();
+        ArrayList<Friend> friends = new ArrayList<>();
         String userInput;
-        StringBuilder report = new StringBuilder(); // Using StringBuilder to append report results instead of +=
-        String[] buttonOptions = {"Invited", "Not Invited"};
+        StringBuilder report = new StringBuilder("Guests: \n \n"); // Using StringBuilder to append report results instead of +=
         int choice;
-        int index = 0;
+        boolean continueProgram;
 
         // Declaring Message Prompts
         String promptGreeting = """
@@ -25,39 +23,38 @@ public class Main{
         String invitePrompt = "Choose if this guest is Invited or Not Invited";
         String anotherGuestPrompt = "Enter another guest?";
         String title = "Party Picker";
-
-        boolean continueProgram = false;
+        String[] buttonOptions = {"Invited", "Not Invited"};
 
 
         // Displaying Welcome Prompt
-        JOptionPane.showMessageDialog(null,promptGreeting, title, JOptionPane.INFORMATION_MESSAGE);
-        Friend friend1 = new Friend();
+        JOptionPane.showMessageDialog(null,promptGreeting, "Message", JOptionPane.INFORMATION_MESSAGE);
 
         do{
+            Friend friend = new Friend();
             // Asking user to input friends first name
-            userInput= JOptionPane.showInputDialog(null, firstNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
-            friend1.setFirstName(userInput);
+            userInput= JOptionPane.showInputDialog(null, firstNamePrompt, title, JOptionPane.QUESTION_MESSAGE);
+            friend.setFirstName(userInput);
 
             // Asking user ot input friends last name
-            userInput = JOptionPane.showInputDialog(null, lastNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
-            friend1.setLastName(userInput);
+            userInput = JOptionPane.showInputDialog(null, lastNamePrompt, title, JOptionPane.QUESTION_MESSAGE);
+            friend.setLastName(userInput);
 
             // Asking user the food the friend is bringing.
-            userInput = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.OK_CANCEL_OPTION);
-            friend1.setFoodToBring(userInput);
+            userInput = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.QUESTION_MESSAGE);
+            friend.setFoodToBring(userInput);
 
             // Asking user if the friend is invited or not.
             choice =
                     JOptionPane.showOptionDialog(null, invitePrompt, title, JOptionPane.DEFAULT_OPTION,
-                            JOptionPane.WARNING_MESSAGE, null, buttonOptions, buttonOptions[1]);
+                            JOptionPane.WARNING_MESSAGE, null, buttonOptions, buttonOptions[0]);
             if (choice == 0){
-                    friend1.setIsInvited(true);
+                    friend.setIsInvited(true);
             } else{
-                friend1.setIsInvited(false);
+                friend.setIsInvited(false);
             }
 
             // Adding friend to friends arrayList
-            friends.add(friend1);
+            friends.add(friend);
 
             // Asking user if they want to add another guest
             choice =
@@ -74,14 +71,11 @@ public class Main{
         // for each loop to gather results from friends arrayList
         for (Friend currentFriend: friends){
             report.append(currentFriend.toString(currentFriend));
+            report.append("\n"); // appending a new line
         }
 
         // Displaying final results to user
         JOptionPane.showMessageDialog(null, report.toString(), title, JOptionPane.INFORMATION_MESSAGE);
-
-
-
-
 
     }
 }

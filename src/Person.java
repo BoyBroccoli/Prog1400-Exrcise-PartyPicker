@@ -13,7 +13,7 @@ public abstract class Person {
         this.isInvited=invited;
     }
 
-    Person(){};
+    Person(){}
 
     // Getters
 

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Friend extends Person{
-    ArrayList<String> foodToBring = new ArrayList<String>();
+    ArrayList<String> foodToBring = new ArrayList<>();
 
     // Friend Constructor with Parameters
     Friend(String fName, String lName, boolean isInvited, ArrayList<String> food){
@@ -10,7 +10,7 @@ public class Friend extends Person{
     }
 
     // Empty Friend Constructor
-    Friend(){};
+    Friend(){}
 
     // Override Method to get the food a Friend is bringing
     @Override
