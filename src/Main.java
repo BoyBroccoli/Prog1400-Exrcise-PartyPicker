@@ -6,8 +6,10 @@ public class Main{
 
         // Creating a Friend ArrayList
         ArrayList<Friend> friends = new ArrayList<Friend>();
-        String userInput, userInput2, userInput3, userInput4;
+        String userInput, userInput2, userInput3, result = "";
         String[] buttonOptions = {"Invited", "Not Invited"};
+        int choice;
+        int index = 0;
 
         // Declaring Message Prompts
         String promptGreeting = """
@@ -23,21 +25,58 @@ public class Main{
         String anotherGuestPrompt = "Enter another guest?";
         String title = "Party Picker";
 
-        boolean runProgram = true;
+        boolean continueProgram = false;
+
+
+        // Displaying Welcome Prompt
+        JOptionPane.showMessageDialog(null,promptGreeting, title, JOptionPane.INFORMATION_MESSAGE);
+        Friend friend1 = new Friend();
 
         do{
-            JOptionPane.showMessageDialog(null,promptGreeting, "Greetings!", JOptionPane.INFORMATION_MESSAGE);
+            // Asking user to input friends first name
+            userInput= JOptionPane.showInputDialog(null, firstNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
+            friend1.setFirstName(userInput);
 
-            userInput = JOptionPane.showInputDialog(null, firstNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
-
+            // Asking user ot input friends last name
             userInput2 = JOptionPane.showInputDialog(null, lastNamePrompt, title, JOptionPane.OK_CANCEL_OPTION);
+            friend1.setLastName(userInput2);
 
+            // Asking user the food the friend is bringing.
             userInput3 = JOptionPane.showInputDialog(null,foodPrompt,title, JOptionPane.OK_CANCEL_OPTION);
+            friend1.setFoodToBring(userInput3);
 
-            userInput4 = String.valueOf(JOptionPane.showOptionDialog(null, invitePrompt, title, JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, buttonOptions, buttonOptions[1]));
+            // Asking user if the friend is invited or not.
+            choice =
+                    JOptionPane.showOptionDialog(null, invitePrompt, title, JOptionPane.DEFAULT_OPTION,
+                            JOptionPane.WARNING_MESSAGE, null, buttonOptions, buttonOptions[1]);
+            if (choice == 0){
+                    friend1.setIsInvited(true);
+            } else{
+                friend1.setIsInvited(false);
+            }
 
+            // Adding friend to friends arrayList
+            friends.add(friend1);
 
-        } while(runProgram == true);
+            // Asking user if they want to add another guest
+            choice =
+                    JOptionPane.showConfirmDialog(null, anotherGuestPrompt,
+                            title, JOptionPane.YES_NO_OPTION);
+            if (choice == 0){ // yes continue program
+                continueProgram = true;
+            } else { // no end program
+                continueProgram = false;
+            }
+
+        } while(continueProgram == true);
+
+        // for each loop to gather results from friends arrayList
+        for (Friend currentFriend: friends){
+            result += currentFriend.friendToString(currentFriend);
+        }
+
+        // Displaying final results to user
+        JOptionPane.showMessageDialog(null, result, title, JOptionPane.INFORMATION_MESSAGE);
 
 
 

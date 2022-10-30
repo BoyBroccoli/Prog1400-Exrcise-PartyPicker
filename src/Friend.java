@@ -8,9 +8,15 @@ public class Friend extends Person{
         this.foodToBring=food;
     }
 
+    Friend(){};
+
     @Override
     public ArrayList<String> getFoodToBring(){
         return this.foodToBring;
+    }
+
+    public void setFoodToBring(String food){
+        this.foodToBring.add(food);
     }
 
     // Method to display friend information
@@ -21,7 +27,7 @@ public class Friend extends Person{
         } else {
             info += " They are NOT invited to the party.";
         }
-        return info;
 
+        return info;
     }
 }
